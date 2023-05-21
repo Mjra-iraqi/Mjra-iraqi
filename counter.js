@@ -2,14 +2,26 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebas
 import { getDatabase, ref, transaction } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-database.js";
 import { getAnalytics, logEvent } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-analytics.js";
 
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+
 const firebaseConfig = {
+
   apiKey: "AIzaSyCdyutD4Kxvk8NZOxzvw2D00GWdBkfjDdQ",
+
   authDomain: "mjrairaqi-4d215.firebaseapp.com",
+
   databaseURL: "https://mjrairaqi-4d215-default-rtdb.firebaseio.com",
+
   projectId: "mjrairaqi-4d215",
+
   storageBucket: "mjrairaqi-4d215.appspot.com",
+
   messagingSenderId: "463411067509",
-  appId: "1:463411067509:web:b2a206516547635286563c"
+
+  appId: "1:463411067509:web:b2a206516547635286563c",
+
+  measurementId: "G-R55YWWCWCN"
+
 };
 
 // Initialize Firebase

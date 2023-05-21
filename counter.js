@@ -30,3 +30,23 @@ const incrementPageVisits = () => {
 };
 
 window.addEventListener('DOMContentLoaded', incrementPageVisits);
+
+
+const visitCounterElement = document.getElementById("visitCounter");
+
+// قم بتعيين قيمة العداد في العنصر
+const setPageVisits = (count) => {
+  visitCounterElement.textContent = count;
+};
+
+// استرجع قيمة عدد الزيارات من قاعدة البيانات وعرضها
+const getAndDisplayPageVisits = () => {
+  const pageVisitsRef = ref(database, 'pageVisits');
+  get(pageVisitsRef).then((snapshot) => {
+    const count = snapshot.val();
+    setPageVisits(count);
+  });
+};
+
+// استدعاء الدالة لعرض عدد الزيارات عند تحميل الصفحة
+window.addEventListener('DOMContentLoaded', getAndDisplayPageVisits);

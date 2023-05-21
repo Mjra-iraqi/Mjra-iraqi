@@ -1,9 +1,10 @@
 document.addEventListener("DOMContentLoaded", function() {
   var visitCounter = document.getElementById("visitCounter");
   var visitors = 0;
+  var fileURL = "https://drive.google.com/file/d/1kXOETSU6_G_bv7ZdOZmaOCReCny1bput/view?usp=sharing"; // استبدل YOUR_FILE_ID بمعرف الملف الخاص بك
 
-  // استرجاع العدد الحالي من الملف أو استخدام القيمة الافتراضية إذا لم يتم العثور على الملف
-  fetch("visitors.txt")
+  // استرجاع العدد الحالي من الملف أو استخدام القيمة الافتراضية إذا فشل الوصول إلى الملف
+  fetch(fileURL)
     .then(function(response) {
       return response.text();
     })
@@ -20,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function() {
   visitCounter.textContent = visitors;
 
   // تحديث الملف بالعدد الجديد
-  fetch("visitors.txt", {
+  fetch(fileURL, {
     method: "PUT",
     body: visitors.toString()
   })
@@ -31,4 +32,3 @@ document.addEventListener("DOMContentLoaded", function() {
       console.log("حدث خطأ في تحديث عدد الزيارات: " + error);
     });
 });
-

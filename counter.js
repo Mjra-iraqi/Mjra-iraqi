@@ -1,6 +1,34 @@
 // عدد الزيارات المبدئي
 let counter = 0;
 
+
+
+
+
+function updateCounter() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      var counterValue = parseInt(this.responseText);
+      if (!isNaN(counterValue)) {
+        document.getElementById("counter").textContent = counterValue;
+      }
+    }
+  };
+  xhttp.open("GET", "counter.php", true);
+  xhttp.send();
+}
+
+// تحديث العداد كل ثانية واحدة (يمكنك تعديل هذه القيمة وفقًا لاحتياجاتك)
+setInterval(updateCounter, 1000);
+
+
+
+
+
+
+
+
 // زيادة العداد وحفظه
 function increaseCounter() {
   counter++;

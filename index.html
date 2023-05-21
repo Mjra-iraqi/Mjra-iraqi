@@ -223,5 +223,24 @@
 </body>
   
   <script src="counter.js"> </script>
+  
+  
+  
+  <script>
+  function updateCounter() {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        document.getElementById("counter").textContent = this.responseText;
+      }
+    };
+    xhttp.open("GET", "counter.php", true);
+    xhttp.send();
+  }
+
+  // تحديث العداد كل ثانية واحدة (يمكنك تعديل هذه القيمة وفقًا لاحتياجاتك)
+  setInterval(updateCounter, 1000);
+</script>
+
 
 

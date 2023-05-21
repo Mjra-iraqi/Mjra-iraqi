@@ -1,59 +1,20 @@
-// عدد الزيارات المبدئي
-let counter = 0;
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
 
-
-
-
-
-function updateCounter() {
-  var xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-      var counterValue = parseInt(this.responseText);
-      if (!isNaN(counterValue)) {
-        document.getElementById("counter").textContent = counterValue;
-      }
-    }
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyCdyutD4Kxvk8NZOxzvw2D00GWdBkfjDdQ",
+    authDomain: "mjrairaqi-4d215.firebaseapp.com",
+    databaseURL: "https://mjrairaqi-4d215-default-rtdb.firebaseio.com",
+    projectId: "mjrairaqi-4d215",
+    storageBucket: "mjrairaqi-4d215.appspot.com",
+    messagingSenderId: "463411067509",
+    appId: "1:463411067509:web:b2a206516547635286563c"
   };
-  xhttp.open("GET", "counter.php", true);
-  xhttp.send();
-}
 
-// تحديث العداد كل ثانية واحدة (يمكنك تعديل هذه القيمة وفقًا لاحتياجاتك)
-setInterval(updateCounter, 1000);
-
-
-
-
-
-
-
-
-// زيادة العداد وحفظه
-function increaseCounter() {
-  counter++;
-  // استدعاء ملف PHP لزيادة العداد
-  let xhr = new XMLHttpRequest();
-  xhr.open("GET", "counter.php");
-  xhr.send();
-  
-  // قم بتحديث عنصر العرض في الصفحة
-  document.getElementById("counter").textContent = counter;
-}
-
-// تحميل العداد عند تحميل الصفحة
-window.addEventListener("load", function() {
-  // استدعاء ملف PHP لتحميل العداد
-  let xhr = new XMLHttpRequest();
-  xhr.onreadystatechange = function() {
-    if (xhr.readyState === XMLHttpRequest.DONE) {
-      if (xhr.status === 200) {
-        counter = parseInt(xhr.responseText);
-        // قم بتحديث عنصر العرض في الصفحة
-        document.getElementById("counter").textContent = counter;
-      }
-    }
-  };
-  xhr.open("GET", "counter.php");
-  xhr.send();
-});
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+</script>

@@ -6,7 +6,7 @@ import 'firebase/database';
 var firebaseConfig = {
     apiKey: "AIzaSyCdyutD4Kxvk8NZOxzvw2D00GWdBkfjDdQ",
     authDomain: "YOUR_AUTH_DOMAIN",
-    databaseURL: "YOUR_DATABASE_URL",
+    databaseURL: "https://mjrairaqi-4d215-default-rtdb.firebaseio.com",
     projectId: "mjrairaqi-4d215",
     storageBucket: "YOUR_STORAGE_BUCKET",
     messagingSenderId: "YOUR_MESSAGING_SENDER_ID",

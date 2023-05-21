@@ -1,7 +1,6 @@
-// counter.js
-
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
 import { getDatabase, ref, transaction } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-database.js";
+import { getAnalytics, logEvent } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-analytics.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCdyutD4Kxvk8NZOxzvw2D00GWdBkfjDdQ",
@@ -13,12 +12,12 @@ const firebaseConfig = {
   appId: "1:463411067509:web:b2a206516547635286563c"
 };
 
-
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const database = getDatabase();
+const analytics = getAnalytics(app);
 
-// Increase the visit counter on page load
+// زيادة عداد الزيارات عند تحميل الصفحة
 const incrementPageVisits = () => {
   const pageVisitsRef = ref(database, 'pageVisits');
   transaction(pageVisitsRef, (currentVisits) => {
@@ -26,20 +25,22 @@ const incrementPageVisits = () => {
       return 1;
     }
     return currentVisits + 1;
+  }).then(() => {
+    // تسجيل حدث زيارة الصفحة في Firebase Analytics
+    logEvent(analytics, 'page_visit');
   });
 };
 
 window.addEventListener('DOMContentLoaded', incrementPageVisits);
 
-
 const visitCounterElement = document.getElementById("visitCounter");
 
-// قم بتعيين قيمة العداد في العنصر
+// تعيين قيمة العداد في العنصر
 const setPageVisits = (count) => {
   visitCounterElement.textContent = count;
 };
 
-// استرجع قيمة عدد الزيارات من قاعدة البيانات وعرضها
+// استرجاع قيمة عدد الزيارات من قاعدة البيانات وعرضها
 const getAndDisplayPageVisits = () => {
   const pageVisitsRef = ref(database, 'pageVisits');
   get(pageVisitsRef).then((snapshot) => {
@@ -50,3 +51,5 @@ const getAndDisplayPageVisits = () => {
 
 // استدعاء الدالة لعرض عدد الزيارات عند تحميل الصفحة
 window.addEventListener('DOMContentLoaded', getAndDisplayPageVisits);
+
+

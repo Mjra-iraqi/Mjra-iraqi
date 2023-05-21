@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
   var visitCounter = document.getElementById("visitCounter");
   var visitors = 0;
-  var fileURL = "https://drive.google.com/file/d/1kXOETSU6_G_bv7ZdOZmaOCReCny1bput/view?usp=sharing"; // استبدل YOUR_FILE_ID بمعرف الملف الخاص بك
+  var fileURL = "https://drive.google.com/file/d/1kXOETSU6_G_bv7ZdOZmaOCReCny1bput/view?usp=drivesdk"; // استبدل YOUR_FILE_ID بمعرف الملف الخاص بك
 
   // استرجاع العدد الحالي من الملف أو استخدام القيمة الافتراضية إذا فشل الوصول إلى الملف
   fetch(fileURL)

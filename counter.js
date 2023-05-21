@@ -31,3 +31,4 @@ document.addEventListener("DOMContentLoaded", function() {
       console.log("حدث خطأ في تحديث عدد الزيارات: " + error);
     });
 });
+

@@ -27,7 +27,7 @@ const incrementPageVisits = () => {
     return currentVisits + 1;
   }).then(() => {
     // تسجيل حدث زيارة الصفحة في Firebase Analytics
-    logEvent(analytics, 'page_visit');
+    logEvent(analytics, 'pageVisits');
   });
 };
 

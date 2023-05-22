@@ -223,45 +223,7 @@
   
   
   
-  <!-- إضافة مكتبة Firebase -->
-<script src="https://www.gstatic.com/firebasejs/8.7.0/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.7.0/firebase-database.js"></script>
 
-<!-- عنصر HTML لعرض العداد -->
-<p id="counter">Loading...</p>
-
-<script>
-  // تكوين مشروع Firebase الخاص بك
-  var firebaseConfig = {
-  apiKey: "AIzaSyCdyutD4Kxvk8NZOxzvw2D00GWdBkfjDdQ",
-  authDomain: "mjrairaqi-4d215.firebaseapp.com",
-  databaseURL: "https://mjrairaqi-4d215-default-rtdb.firebaseio.com",
-  projectId: "mjrairaqi-4d215",
-  storageBucket: "mjrairaqi-4d215.appspot.com",
-  messagingSenderId: "463411067509",
-  appId: "1:463411067509:web:b2a206516547635286563c",
-  measurementId: "G-R55YWWCWCN"
-};
-
-  // تهيئة التطبيق
-  firebase.initializeApp(firebaseConfig);
-
-  // الحصول على مرجع لقاعدة البيانات
-  var database = firebase.database();
-
-  // زيادة العداد بواحد عند تحميل الصفحة
-  database.ref('visits').transaction(function(currentCount) {
-    return (currentCount || 0) + 1;
-  }, function(error, committed, snapshot) {
-    if (error) {
-      console.log('فشل في زيادة العداد: ' + error);
-    } else if (committed) {
-      // استعراض قيمة العداد المحدثة
-      var counterElement = document.getElementById('counter');
-      counterElement.textContent = 'عدد الزيارات: ' + snapshot.val();
-    }
-  });
-</script>
 
   
   
@@ -270,7 +232,7 @@
   
   
   
-  
+
   
   
   <!-- Google tag (gtag.js) -->
@@ -295,7 +257,89 @@
 
 </body>
   
+  
   <script src="counter.js" type="module"></script>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+  
+
+    <!-- إضافة مكتبة Firebase -->
+
+<script src="https://www.gstatic.com/firebasejs/8.7.0/firebase-app.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/8.7.0/firebase-database.js"></script>
+
+<!-- عنصر HTML لعرض العداد -->
+
+<p id="counter">Loading...</p>
+
+<script>
+
+  // تكوين مشروع Firebase الخاص بك
+
+  var firebaseConfig = {
+
+  apiKey: "AIzaSyCdyutD4Kxvk8NZOxzvw2D00GWdBkfjDdQ",
+
+  authDomain: "mjrairaqi-4d215.firebaseapp.com",
+
+  databaseURL: "https://mjrairaqi-4d215-default-rtdb.firebaseio.com",
+
+  projectId: "mjrairaqi-4d215",
+
+  storageBucket: "mjrairaqi-4d215.appspot.com",
+
+  messagingSenderId: "463411067509",
+
+  appId: "1:463411067509:web:b2a206516547635286563c",
+
+  measurementId: "G-R55YWWCWCN"
+
+};
+
+  // تهيئة التطبيق
+
+  firebase.initializeApp(firebaseConfig);
+
+  // الحصول على مرجع لقاعدة البيانات
+
+  var database = firebase.database();
+
+  // زيادة العداد بواحد عند تحميل الصفحة
+
+  database.ref('visits').transaction(function(currentCount) {
+
+    return (currentCount || 0) + 1;
+
+  }, function(error, committed, snapshot) {
+
+    if (error) {
+
+      console.log('فشل في زيادة العداد: ' + error);
+
+    } else if (committed) {
+
+      // استعراض قيمة العداد المحدثة
+
+      var counterElement = document.getElementById('counter');
+
+      counterElement.textContent = 'عدد الزيارات: ' + snapshot.val();
+
+    }
+
+  });
+
+</script>
+
 
 
 
